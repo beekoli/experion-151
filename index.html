@@ -13,7 +13,7 @@
 <meta property="og:title" content="Experion Saatori Sector 151 Noida | Luxury 3 &amp; 4 BHK from ₹3.36 Cr*">
 <meta property="og:description" content="Homes for inner peace on Noida Expressway. 3 Zen towers, only 4 flats/floor, 1,35,000 sq ft of amenities. From ₹3.36 Cr*. RERA approved. By Experion (FDI-funded).">
 <meta property="og:url" content="https://experion151.propertysaraansh.com/">
-<meta property="og:image" content="https://i.ytimg.com/vi/gYfkP-0pi0o/maxresdefault.jpg">
+<meta property="og:image" content="https://experion151.propertysaraansh.com/exp-hero.jpg">
 <meta name="robots" content="index,follow">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -111,7 +111,23 @@ a{color:inherit;text-decoration:none}
 .render .ph .em{width:76px;height:76px;margin:0 auto 12px}
 .render .ph b{font-family:'Cormorant Garamond',serif;font-size:22px;display:block}
 .render .ph span{font-size:12px;color:var(--gray)}
-.render .tag{position:absolute;bottom:12px;right:14px;font-size:11px;letter-spacing:1px;color:var(--gray);text-transform:uppercase;z-index:2}
+.render .tag{position:absolute;bottom:12px;right:14px;font-size:11px;letter-spacing:1px;color:#fff;text-transform:uppercase;z-index:2;background:rgba(43,33,28,.55);padding:4px 10px;border-radius:20px}
+.render img{width:100%;height:100%;object-fit:cover;display:block}
+/* GALLERY + PLANS */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gcard{border-radius:12px;overflow:hidden;border:1px solid var(--line);position:relative;aspect-ratio:3/2;box-shadow:0 8px 22px rgba(43,33,28,.07)}
+.gcard img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.gcard:hover img{transform:scale(1.06)}
+.gcard span{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(0deg,rgba(43,33,28,.8),transparent);color:#fff;font-size:12.5px;padding:20px 12px 9px;font-weight:500}
+.siteplan-wrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 12px 30px rgba(43,33,28,.08)}
+.siteplan-wrap img{width:100%;display:block}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 8px 22px rgba(43,33,28,.06)}
+.plan img{width:100%;height:auto;display:block;background:#fff;cursor:pointer}
+.plan .pl{padding:11px 14px;font-size:14px;font-weight:600;color:var(--ink);border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.plan .pl button{font-size:12px;padding:7px 13px;white-space:nowrap}
+@media(max-width:700px){.gallery-grid,.plans-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.gallery-grid,.plans-grid{grid-template-columns:1fr}}
 
 /* CONFIG CARDS */
 .cfg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -235,8 +251,8 @@ footer a{color:#e9ddd6}
     <img src="experion-logo.png" alt="Experion — Experion Saatori Sector 151, Noida" class="brand-logo" width="480" height="63">
   </a>
   <nav class="nav">
-    <a href="#overview">Overview</a><a href="#pricing">Pricing</a><a href="#payment">Payment</a>
-    <a href="#video">Video</a><a href="#location">Location</a><a href="#faq">FAQ</a>
+    <a href="#overview">Overview</a><a href="#gallery">Gallery</a><a href="#pricing">Pricing</a>
+    <a href="#plans">Plans</a><a href="#video">Video</a><a href="#location">Location</a><a href="#faq">FAQ</a>
   </nav>
   <div class="hdr-cta">
     <a href="tel:+919999135369" class="hdr-call" onclick="trackCall()">📞 99991 35369</a>
@@ -245,7 +261,8 @@ footer a{color:#e9ddd6}
   </div>
 </div>
 <nav class="mobile-nav">
-  <a href="#overview" onclick="closeMenu()">Overview</a><a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#overview" onclick="closeMenu()">Overview</a><a href="#gallery" onclick="closeMenu()">Gallery</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a><a href="#plans" onclick="closeMenu()">Site &amp; Floor Plans</a>
   <a href="#payment" onclick="closeMenu()">Payment Plan</a><a href="#video" onclick="closeMenu()">Video Review</a>
   <a href="#location" onclick="closeMenu()">Location</a><a href="#faq" onclick="closeMenu()">FAQ</a>
 </nav>
@@ -316,13 +333,24 @@ footer a{color:#e9ddd6}
       </div>
     </div>
     <div class="render" id="renderHero">
-      <div class="ph">
-        <svg class="em" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 22a16 16 0 0 1 32 0Z" fill="#b11116"/><g fill="#fff"><circle cx="20" cy="14.5" r="2.1"/><circle cx="15.6" cy="17.2" r="2.1"/><circle cx="24.4" cy="17.2" r="2.1"/><circle cx="17.4" cy="20.4" r="2.1"/><circle cx="22.6" cy="20.4" r="2.1"/></g></svg>
-        <b>Experion Saatori</b>
-        <span>Your Inner Peace · Sector 151, Noida</span>
-      </div>
+      <img src="exp-hero.jpg" alt="Experion Saatori Sector 151 Noida — three Zen towers artistic impression" loading="lazy" width="1500" height="1121">
       <div class="tag">Artistic impression</div>
     </div>
+  </div>
+</div></section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery"><div class="container">
+  <div class="section-label">Artistic Impressions</div>
+  <h2 class="section-title">Inside <span class="red">Saatori</span></h2>
+  <div class="divider"></div>
+  <div class="gallery-grid">
+    <div class="gcard"><img src="exp-hero.jpg" alt="Three sculpted G+38 Zen towers, Experion Saatori" loading="lazy"><span>Three sculpted G+38 Zen towers</span></div>
+    <div class="gcard"><img src="exp-g3.jpg" alt="Wellness pavilion and Zen court" loading="lazy"><span>Wellness Pavilion &amp; Zen court</span></div>
+    <div class="gcard"><img src="exp-g5.jpg" alt="Pool inspired by Japanese Zen" loading="lazy"><span>Pool inspired by Japanese Zen</span></div>
+    <div class="gcard"><img src="exp-g4.jpg" alt="Zen rock and sand garden" loading="lazy"><span>Zen rock &amp; sand garden</span></div>
+    <div class="gcard"><img src="exp-g2.jpg" alt="Microclimatic landscape design" loading="lazy"><span>Microclimatic landscape</span></div>
+    <div class="gcard"><img src="exp-g1.jpg" alt="Grand arrival gateway with blossoms" loading="lazy"><span>Grand arrival gateway</span></div>
   </div>
 </div></section>
 
@@ -355,6 +383,20 @@ footer a{color:#e9ddd6}
     </div>
   </div>
   <p style="text-align:center;color:var(--gray);font-size:13px;margin-top:18px">*Indicative pricing at ₹16,000/sq ft. Prices subject to change — contact us for the latest all-inclusive cost.</p>
+</div></section>
+
+<!-- SITE & FLOOR PLANS -->
+<section class="section" id="plans" style="background:var(--bg2)"><div class="container">
+  <div class="section-label">Master &amp; Floor Plans</div>
+  <h2 class="section-title">Site Plan &amp; <span class="red">Floor Plans</span></h2>
+  <div class="divider"></div>
+  <div class="siteplan-wrap" style="margin-bottom:22px"><img src="exp-siteplan.jpg" alt="Experion Saatori Sector 151 Noida master site plan" loading="lazy"></div>
+  <div class="plans-grid">
+    <div class="plan"><img src="exp-floor1.jpg" alt="Experion Saatori Tower 1 floor plan" loading="lazy" onclick="openModal()"><div class="pl"><span>Tower 1 · 3 BHK</span><button class="btn-red" onclick="openModal()">Get PDF</button></div></div>
+    <div class="plan"><img src="exp-floor2.jpg" alt="Experion Saatori Tower 2 &amp; 3 floor plan" loading="lazy" onclick="openModal()"><div class="pl"><span>Tower 2 &amp; 3 · 3 BHK</span><button class="btn-red" onclick="openModal()">Get PDF</button></div></div>
+    <div class="plan"><img src="exp-floor3.jpg" alt="Experion Saatori 4 BHK unit plan" loading="lazy" onclick="openModal()"><div class="pl"><span>4 BHK + Study</span><button class="btn-red" onclick="openModal()">Get PDF</button></div></div>
+  </div>
+  <p style="text-align:center;color:var(--gray);font-size:13px;margin-top:16px">Carpet areas per developer plans — 2 BHK 902–1,013 sq ft · 3 BHK 1,095–1,399 sq ft · 4 BHK 1,684 sq ft. Plans are indicative; request the full brochure for exact dimensions.</p>
 </div></section>
 
 <!-- PAYMENT PLAN -->

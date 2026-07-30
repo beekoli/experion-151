@@ -564,8 +564,8 @@ footer a{color:#e9ddd6}
 // ===== CONFIG =====
 var APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbyXi5ekoqBnAWsN4V_uLkSt73um0p1n74o8_Gw7OMlKj3rnomtjJnVzRtL5fHb95O_1WQ/exec";
 var AW_ID="AW-10828813008";
-// TODO: replace *_LABEL with real Experion conversion labels once created in Google Ads
-window.EL_CONV={form:AW_ID+"/EXPERION_FORM_LABEL",whatsapp:AW_ID+"/EXPERION_WA_LABEL",call:AW_ID+"/EXPERION_CALL_LABEL"};
+// Experion Saatori conversion labels (Property Portfolio AW-10828813008, created 2026-07-29)
+window.EL_CONV={form:AW_ID+"/OYZoCP7z5tgcENClyqso",whatsapp:AW_ID+"/9aiSCIT05tgcENClyqso",call:AW_ID+"/YMSPCIH05tgcENClyqso"};
 function elFireConv(k,cb){var s=window.EL_CONV&&window.EL_CONV[k];var done=false;var go=function(){if(done)return;done=true;cb&&cb()};if(window.gtag&&s&&s.indexOf("_LABEL")<0){gtag("event","conversion",{send_to:s,event_callback:go});setTimeout(go,900)}else{go()}}
 // ===== deferred Ads gtag =====
 (function(){var loaded=false;function load(){if(loaded)return;loaded=true;var sc=document.createElement("script");sc.async=true;sc.src="https://www.googletagmanager.com/gtag/js?id="+AW_ID;document.head.appendChild(sc);gtag("config",AW_ID)}["scroll","click","touchstart","keydown"].forEach(function(e){window.addEventListener(e,load,{once:true,passive:true})});window.addEventListener("load",function(){setTimeout(load,3500)})})();

@@ -241,12 +241,15 @@ footer a{color:#e9ddd6}
  .hstat b{font-size:20px}.hstat span{font-size:9px;letter-spacing:.3px;white-space:nowrap}
  .cfg-grid,.pay-grid,.ov-stats,.crow{grid-template-columns:1fr}
  .feat-grid{grid-template-columns:1fr 1fr}
- /* Site plan: swipe at readable size on mobile (wide detailed plan) */
- .siteplan-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
- .siteplan-wrap img{width:820px;max-width:none;height:auto}
  .siteplan-hint{display:block}
 }
-.siteplan-hint{display:none;text-align:center;font-size:12px;color:var(--gray);margin-top:8px}
+.siteplan-hint{display:none;text-align:center;font-size:12px;color:var(--red);font-weight:500;margin-top:8px}
+/* Fullscreen image lightbox (tap plans to enlarge) */
+.imgbox{position:fixed;inset:0;z-index:120;background:rgba(20,15,12,.93);display:none;padding:14px 6px;overflow:auto;text-align:center}
+.imgbox.open{display:block}
+.imgbox img{width:auto;max-width:1400px;min-width:100%;height:auto;border-radius:8px}
+.imgbox .x{position:fixed;top:10px;right:14px;color:#fff;font-size:26px;line-height:42px;background:rgba(0,0,0,.45);border:none;border-radius:50%;width:42px;height:42px;cursor:pointer;z-index:121}
+.siteplan-wrap img,.plan img{cursor:zoom-in}
 </style>
 </head>
 <body>
@@ -395,12 +398,12 @@ footer a{color:#e9ddd6}
   <div class="section-label">Master &amp; Floor Plans</div>
   <h2 class="section-title">Site Plan &amp; <span class="red">Floor Plans</span></h2>
   <div class="divider"></div>
-  <div class="siteplan-wrap"><img src="exp-siteplan.jpg" alt="Experion Saatori Sector 151 Noida master site plan" loading="lazy" width="1300" height="919"></div>
-  <div class="siteplan-hint">← Swipe to explore the full site plan →</div>
+  <div class="siteplan-wrap"><img src="exp-siteplan.jpg" alt="Experion Saatori Sector 151 Noida master site plan" loading="lazy" width="1300" height="919" onclick="openImg('exp-siteplan.jpg')"></div>
+  <div class="siteplan-hint">🔍 Tap the site plan to enlarge</div>
   <div class="plans-grid">
-    <div class="plan"><img src="exp-floor1.jpg" alt="Experion Saatori Tower 1 floor plan" loading="lazy" width="1100" height="1555" onclick="openModal()"><div class="pl"><span>Tower 1 · 3 BHK</span><button class="btn-red" onclick="openModal()">Get PDF</button></div></div>
-    <div class="plan"><img src="exp-floor2.jpg" alt="Experion Saatori Tower 2 &amp; 3 floor plan" loading="lazy" width="1100" height="1555" onclick="openModal()"><div class="pl"><span>Tower 2 &amp; 3 · 3 BHK</span><button class="btn-red" onclick="openModal()">Get PDF</button></div></div>
-    <div class="plan"><img src="exp-floor3.jpg" alt="Experion Saatori 4 BHK unit plan" loading="lazy" width="1100" height="1555" onclick="openModal()"><div class="pl"><span>4 BHK + Study</span><button class="btn-red" onclick="openModal()">Get PDF</button></div></div>
+    <div class="plan"><img src="exp-floor1.jpg" alt="Experion Saatori Tower 1 floor plan" loading="lazy" width="1100" height="1555" onclick="openImg('exp-floor1.jpg')"><div class="pl"><span>Tower 1 · 3 BHK</span><button class="btn-red" onclick="openModal()">Get PDF</button></div></div>
+    <div class="plan"><img src="exp-floor2.jpg" alt="Experion Saatori Tower 2 &amp; 3 floor plan" loading="lazy" width="1100" height="1555" onclick="openImg('exp-floor2.jpg')"><div class="pl"><span>Tower 2 &amp; 3 · 3 BHK</span><button class="btn-red" onclick="openModal()">Get PDF</button></div></div>
+    <div class="plan"><img src="exp-floor3.jpg" alt="Experion Saatori 4 BHK unit plan" loading="lazy" width="1100" height="1555" onclick="openImg('exp-floor3.jpg')"><div class="pl"><span>4 BHK + Study</span><button class="btn-red" onclick="openModal()">Get PDF</button></div></div>
   </div>
   <p style="text-align:center;color:var(--gray);font-size:13px;margin-top:16px">Carpet areas per developer plans — 2 BHK 902–1,013 sq ft · 3 BHK 1,095–1,399 sq ft · 4 BHK 1,684 sq ft. Plans are indicative; request the full brochure for exact dimensions.</p>
 </div></section>
@@ -566,6 +569,9 @@ footer a{color:#e9ddd6}
   <div class="form-success" id="modalSuccess"><div class="ck">✅</div><h3 style="font-size:22px">Thank You!</h3><p style="color:var(--gray);font-size:14px">Our advisor will call you shortly.</p></div>
 </div></div>
 
+<!-- IMAGE LIGHTBOX -->
+<div class="imgbox" id="imgbox" onclick="closeImg(event)"><button class="x" onclick="closeImg()">✕</button><img id="imgboxImg" src="" alt="Enlarged plan — pinch to zoom"></div>
+
 <script>
 // ===== CONFIG =====
 var APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxFxXIl-l28IBKSWkzE89uzc0ZXd_gxfCobTTszYWREBRUM2U24ugpow1VN9JyHpB-_/exec";
@@ -587,6 +593,8 @@ function submitForm(e,formId){e.preventDefault();var f=e.target,btn=f.querySelec
 function trackCall(){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:"call_click",project:"experion-saatori-151"});elFireConv("call")}
 function trackWhatsApp(){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:"whatsapp_click",project:"experion-saatori-151"});elFireConv("whatsapp")}
 // ===== UI =====
+function openImg(src){var b=document.getElementById("imgbox");document.getElementById("imgboxImg").src=src;b.classList.add("open");document.body.style.overflow="hidden"}
+function closeImg(e){if(e&&e.target&&e.target.id!=="imgbox"&&!/(^|\s)x(\s|$)/.test(e.target.className))return;document.getElementById("imgbox").classList.remove("open");document.body.style.overflow=""}
 function openModal(){document.getElementById("modal").classList.add("open");document.body.style.overflow="hidden"}
 function closeModal(){document.getElementById("modal").classList.remove("open");document.body.style.overflow=""}
 document.getElementById("modal").addEventListener("click",function(e){if(e.target===this)closeModal()});
